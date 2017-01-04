@@ -12,8 +12,8 @@ $(() => {
             console.log(qxSchema.model.validation.errors);
         else
             console.log("model is valid");
-        qxSchema.model.processedModel = eval(`(function(model){ ${qxSchema.model.editors.code} })(qxSchema.model.model)`);
-        qxSchema.model.output = Mustache.render(qxSchema.model.editors.template, qxSchema.model.processedModel);
+        eval(`(function(model){ ${qxSchema.model.editors.code} })(qxSchema.model.model)`);
+        qxSchema.model.output = Mustache.render(qxSchema.model.editors.template, qxSchema.model.model);
         qxSchema.ui.outputEditor.setValue(qxSchema.model.output, -1);
     }
     refresh('init', null);
