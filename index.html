@@ -45,27 +45,23 @@
 <div id="column2">
     <div class="editorHeader"><span>#template</span></div>
     <div id="templateEditor">
-        <pre>
-            {{ #classes }}
-            public partial class {{ name }}
-            {
-                {{ #fields }}
-                [JsonProperty("{{name}}")]
-                public {{ type }} {{ name }} { get; set; }
+        {{ #classes }}
+        public partial class {{ name }}
+        {
+            {{ #fields }}
+            [JsonProperty("{{name}}")]
+            public {{ type }} {{ name }} { get; set; }
 
-                {{ /fields }}
-            }
+            {{ /fields }}
+        }
 
-            {{ /classes }}
-        </pre>
+        {{ /classes }}
     </div>
     <div class="editorHeader"><span>#code</span></div>
     <div id="codeEditor">
-        <pre>
-            function duplicate(str) {
-                return str + str;
-            }
-        </pre>
+        function duplicate(str) {
+            return str + str;
+        }
     </div>
 </div>
 <div id="column3">

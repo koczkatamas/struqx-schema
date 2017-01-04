@@ -5,7 +5,7 @@ $(() => {
     LayoutUtils.addEditor("schema", "json", refresh);
     LayoutUtils.addEditor("template", null, refresh);
     LayoutUtils.addEditor("code", "javascript", refresh);
-    LayoutUtils.addEditor("output", "csharp");
+    LayoutUtils.addEditor("output", "csharp", null, true);
 
     function refresh(origin: 'model' | 'schema' | 'template' | 'code' | 'init', newValue: string) {
         qxSchema.model.model = jsyaml.load(qxSchema.model.editors.model);
