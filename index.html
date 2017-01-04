@@ -46,15 +46,15 @@
     <div class="editorHeader"><span>#template</span></div>
     <div id="templateEditor">
         {{ #classes }}
-        public partial class {{ name }}
+        public partial class {{ csName }}
         {
             {{ #fields }}
             [JsonProperty("{{name}}")]
-            public {{ type }} {{ name }} { get; set; }
-
+            public {{ type }} {{ csName }} { get; set; }
+        
             {{ /fields }}
         }
-
+        
         {{ /classes }}
     </div>
     <div class="editorHeader"><span>#code</span></div>

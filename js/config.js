@@ -1,2 +1,2 @@
 var qxSchema = qxSchema || {};
-qxSchema.version = '0.0.0.179';
+qxSchema.version = '0.0.0.180';
