@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -8,9 +8,77 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="js/autorefresh.js"></script>
     <script src="js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.0.1-beta.0/ajv.min.js"></script>
+    <script src="js/LayoutUtils.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        html, body { height:100%; width:100%; margin:0; background:#080808 }
+        #column1, #column2, #column3 { height: 100%;width: 33.33%; float:left; display: flex; flex-direction: column; }
+        #modelEditor, #schemaEditor, #templateEditor, #codeEditor { height: 50%; width: 100% }
+        #outputEditor { height: 100%; width: 100% }
+        .editorHeader span { background:#272822; color:#ddd; text-align:center; font-family:arial; font-size:12px; font-weight:bold; padding:2px 20px 2px 8px }
+    </style>
 </head>
 <body>
-hi2
+<div id="column1">
+    <div class="editorHeader"><span>#model</span></div>
+    <div id="modelEditor">
+        <pre>
+            function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+            }
+        </pre>
+    </div>
+    <div class="editorHeader"><span>#schema</span></div>
+    <div id="schemaEditor">
+        <pre>
+            function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+            }
+        </pre>
+    </div>
+</div>
+<div id="column2">
+    <div class="editorHeader"><span>#template</span></div>
+    <div id="templateEditor">
+        <pre>
+            function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+            }
+        </pre>
+    </div>
+    <div class="editorHeader"><span>#code</span></div>
+    <div id="codeEditor">
+        <pre>
+            function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+            }
+        </pre>
+    </div>
+</div>
+<div id="column3">
+    <div class="editorHeader"><span>#output</span></div>
+    <div id="outputEditor">
+        <pre>
+            function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+            }
+        </pre>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+<script>
+    LayoutUtils.addEditor("modelEditor", "yaml", () => { console.log('model changed'); });
+    LayoutUtils.addEditor("schemaEditor", "json", () => { console.log('schema changed'); });
+    LayoutUtils.addEditor("templateEditor", "yaml", () => { console.log('template changed'); });
+    LayoutUtils.addEditor("codeEditor", "javascript", () => { console.log('code changed'); });
+    LayoutUtils.addEditor("outputEditor", "javascript");
+</script>
 </body>
 </html>

@@ -1,1 +1,9 @@
-﻿console.log('hello3');
+﻿declare var Ajv: any;
+
+var ajv = new Ajv();
+var validate = ajv.compile({ "type": "string" });
+var valid = validate({ a: 1 });
+if (!valid)
+    console.log(validate.errors);
+else
+    console.log("valid");
