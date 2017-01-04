@@ -1,11 +1,11 @@
-﻿declare var Ajv: any, jsyaml: any;
+﻿declare var Ajv: any, jsyaml: any, Mustache: any;
 
 $(() => {
     LayoutUtils.addEditor("model", "yaml", refresh);
     LayoutUtils.addEditor("schema", "json", refresh);
-    LayoutUtils.addEditor("template", "yaml", refresh);
+    LayoutUtils.addEditor("template", null, refresh);
     LayoutUtils.addEditor("code", "javascript", refresh);
-    LayoutUtils.addEditor("output", "javascript");
+    LayoutUtils.addEditor("output", "csharp");
 
     function refresh(origin: 'model' | 'schema' | 'template' | 'code' | 'init', newValue: string) {
         qxSchema.model.model = jsyaml.load(qxSchema.model.editors.model);
@@ -16,6 +16,9 @@ $(() => {
             console.log(qxSchema.model.validation.errors);
         else
             console.log("model is valid");
+
+        qxSchema.model.output = Mustache.render(qxSchema.model.editors.template, qxSchema.model.model);
+        qxSchema.ui.outputEditor.setValue(qxSchema.model.output, -1);
     }
 
     refresh('init', null);

@@ -26,15 +26,18 @@
         classes:
           - name: login_request
             fields:
-              - username: { type: string }
-              - password: { type: string }
+              - { name: username, type: string }
+              - { name: password, type: string }
+          - name: class2
+            fields:
+              - { name: field1, type: string }
+              - { name: field2, type: string }
     </div>
     <div class="editorHeader"><span>#schema</span></div>
     <div id="schemaEditor">
         <pre>
-            function foo(items) {
-                var x = "All this is syntax highlighted";
-                return x;
+            {
+              "type": "object"
             }
         </pre>
     </div>
@@ -43,35 +46,35 @@
     <div class="editorHeader"><span>#template</span></div>
     <div id="templateEditor">
         <pre>
-            function foo(items) {
-                var x = "All this is syntax highlighted";
-                return x;
+            {{ #classes }}
+            public partial class {{ name }}
+            {
+                {{ #fields }}
+                [JsonProperty("{{name}}")]
+                public {{ type }} {{ name }} { get; set; }
+
+                {{ /fields }}
             }
+
+            {{ /classes }}
         </pre>
     </div>
     <div class="editorHeader"><span>#code</span></div>
     <div id="codeEditor">
         <pre>
-            function foo(items) {
-                var x = "All this is syntax highlighted";
-                return x;
+            function duplicate(str) {
+                return str + str;
             }
         </pre>
     </div>
 </div>
 <div id="column3">
     <div class="editorHeader"><span>#output</span></div>
-    <div id="outputEditor">
-        <pre>
-            function foo(items) {
-                var x = "All this is syntax highlighted";
-                return x;
-            }
-        </pre>
-    </div>
+    <div id="outputEditor" />
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.0.1-beta.0/ajv.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.7.0/js-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 </body>
 </html>

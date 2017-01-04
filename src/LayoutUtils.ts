@@ -25,11 +25,12 @@ class LayoutUtils {
         return lines.join('\n').trim();
     }
 
-    static addEditor(name, lang, onChanged: (origin:string, newValue:string) => void = null) {
+    static addEditor(name, lang?: string, onChanged?: (origin:string, newValue:string) => void) {
         var editorName = `${name}Editor`;
         var editor = qxSchema.ui[editorName] = ace.edit(editorName);
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode(`ace/mode/${lang}`);
+        if(lang)
+            editor.getSession().setMode(`ace/mode/${lang}`);
         editor.setOption('tabSize', 2);
         editor.$blockScrolling = Infinity; // TODO: remove this line after they fix ACE not to throw warning to the console
 

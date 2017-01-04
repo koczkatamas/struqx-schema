@@ -17,11 +17,12 @@ class LayoutUtils {
             lines = lines.map(line => line.substr(indentLen));
         return lines.join('\n').trim();
     }
-    static addEditor(name, lang, onChanged = null) {
+    static addEditor(name, lang, onChanged) {
         var editorName = `${name}Editor`;
         var editor = qxSchema.ui[editorName] = ace.edit(editorName);
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode(`ace/mode/${lang}`);
+        if (lang)
+            editor.getSession().setMode(`ace/mode/${lang}`);
         editor.setOption('tabSize', 2);
         editor.$blockScrolling = Infinity; // TODO: remove this line after they fix ACE not to throw warning to the console
         var localStorageKey = `model_${name}_value`;
