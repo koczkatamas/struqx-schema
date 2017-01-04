@@ -59,9 +59,22 @@
     </div>
     <div class="editorHeader"><span>#code</span></div>
     <div id="codeEditor">
-        function duplicate(str) {
-            return str + str;
+        function ucFirst(str){ 
+          return str.charAt(0).toUpperCase() + str.slice(1);
         }
+        
+        function getCsharpName(modelName){
+          return modelName.split('_').map(ucFirst).join('');
+        }
+        
+        model.classes.forEach(c => {
+          c.csName = getCsharpName(c.name);
+          c.fields.forEach(f => {
+            f.csName = getCsharpName(f.name);
+          })
+        });
+        
+        return model;
     </div>
 </div>
 <div id="column3">
