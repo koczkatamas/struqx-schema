@@ -8,7 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="js/autorefresh.js"></script>
     <script src="js/config.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.0.1-beta.0/ajv.min.js"></script>
     <script src="js/LayoutUtils.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
@@ -24,12 +23,11 @@
 <div id="column1">
     <div class="editorHeader"><span>#model</span></div>
     <div id="modelEditor">
-        <pre>
-            function foo(items) {
-                var x = "All this is syntax highlighted";
-                return x;
-            }
-        </pre>
+        classes:
+          - name: login_request
+            fields:
+              - username: { type: string }
+              - password: { type: string }
     </div>
     <div class="editorHeader"><span>#schema</span></div>
     <div id="schemaEditor">
@@ -73,12 +71,7 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
-<script>
-    LayoutUtils.addEditor("modelEditor", "yaml", () => { console.log('model changed'); });
-    LayoutUtils.addEditor("schemaEditor", "json", () => { console.log('schema changed'); });
-    LayoutUtils.addEditor("templateEditor", "yaml", () => { console.log('template changed'); });
-    LayoutUtils.addEditor("codeEditor", "javascript", () => { console.log('code changed'); });
-    LayoutUtils.addEditor("outputEditor", "javascript");
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.0.1-beta.0/ajv.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.7.0/js-yaml.min.js"></script>
 </body>
 </html>
